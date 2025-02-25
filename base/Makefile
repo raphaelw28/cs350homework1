@@ -250,7 +250,7 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
 
 EXTRA=\
 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
-	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
+	ln.c ls.c mkdir.c mkdir2.c rm.c stressfs.c usertests.c wc.c zombie.c\
 	printf.c umalloc.c\
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
@@ -271,6 +271,7 @@ dist-test:
 	make dist
 	rm -rf dist-test
 	mkdir dist-test
+	mkdir2 dist-test
 	cp dist/* dist-test
 	cd dist-test; $(MAKE) print
 	cd dist-test; $(MAKE) bochs || true
@@ -281,6 +282,7 @@ dist-test:
 tar:
 	rm -rf /tmp/xv6
 	mkdir -p /tmp/xv6
+	mkdir2 -p /tmp/xv6
 	cp dist/* dist/.gdbinit.tmpl /tmp/xv6
 	(cd /tmp; tar cf - xv6) | gzip >xv6-rev10.tar.gz  # the next one will be 10 (9/17)
 
