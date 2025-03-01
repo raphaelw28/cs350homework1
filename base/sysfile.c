@@ -352,15 +352,27 @@ sys_mkdir(void)
 int
 sys_mkdir2(void)
 {
-  char *path;
-  struct inode *ip;
+ 
+  char *path1;
+  struct inode *ip1;
 
   begin_op();
-  if(argstr(0, &path) < 0 || (ip = create(path, T_DIR, 0, 0)) == 0){
+  if(argstr(0, &path1) < 0 || (ip1 = create(path1, T_DIR, 0, 0)) == 0){
     end_op();
     return -1;
   }
-  iunlockput(ip);
+  iunlockput(ip1);
+  end_op();
+  
+  char *path2;
+  struct inode *ip2;
+
+  begin_op();
+  if(argstr(1, &path2) < 0 || (ip2 = create(path2, T_DIR, 0, 0)) == 0){
+    end_op();
+    return -1;
+  }
+  iunlockput(ip2);
   end_op();
   return 0;
 }

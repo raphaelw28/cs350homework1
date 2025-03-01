@@ -9,7 +9,7 @@
 
 //#define STUB_FUNCS
 //#ifdef STUB_FUNCS
-void mkdir2(char * d1, char* d2) {}
+//int mkdir2(char * d1, char* d2) {}
 //#endif
 
 

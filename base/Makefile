@@ -258,6 +258,7 @@ EXTRA=\
 dist:
 	rm -rf dist
 	mkdir dist
+	mkdir2 dist
 	for i in $(FILES); \
 	do \
 		grep -v PAGEBREAK $$i >dist/$$i; \
