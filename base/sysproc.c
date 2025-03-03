@@ -84,6 +84,15 @@ sys_shutdown(void)
 	return 0;
 }
 
+int sys_exit2(void){
+  int exitstatus;
+  if(argint(0, &exitstatus)<0){
+    return -1;
+  }
+  cprintf("exit status: %d\n", exitstatus);
+  exit();
+}
+
 // return how many clock tick interrupts have occurred
 // since start.
 int
